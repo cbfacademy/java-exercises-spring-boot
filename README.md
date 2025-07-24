@@ -267,10 +267,40 @@ The JSON representation of an IOU that you'll get in responses or provide in the
 ### Exercise 3
 
 1. Create an `ious` package inside the `rest-api/src/test/java/com/cbfacademy/springbootexercise` package
-2. Download the [test suite](https://gist.github.com/cbfacademy-admin/be990e8da45fca196513f35f86ed3f52) and copy to the test ious package as IOUControllerTest.java
-3. Run the tests with `./mvnw --projects rest-api clean test`
-4. Examine the results. Do any tests fail? If so, what reasons are given? Modify your code so all tests pass
-5. Commit your changes
+2. Download the [test suite](https://gist.github.com/cbfacademy-admin/be990e8da45fca196513f35f86ed3f52) and copy to the test `ious` package as `IOUControllerTest.java`
+3. **Configure H2 database for testing**: Add the H2 database dependency to your `rest-api/pom.xml` file. Insert this dependency in the `<dependencies>` section:
+
+```xml
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+4. **Create test configuration**: Create a new directory `rest-api/src/test/resources` and add an `application.properties` file with the following content:
+
+```properties
+# Test configuration using H2 in-memory database
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# H2 Console for debugging (optional)
+spring.h2.console.enabled=true
+
+# JPA/Hibernate configuration for H2
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+```
+
+5. Run the tests with `./mvnw --projects rest-api clean test`
+6. Examine the results. Do any tests fail? If so, what reasons are given? Modify your code so all tests pass
+7. Commit your changes
+
+> :bulb: **Note:** The H2 configuration ensures tests use an in-memory database for speed and isolation, while your production application continues to use MySQL. The `create-drop` setting means the database schema is recreated for each test run, ensuring clean test conditions.
 
 ### Exercise 4
 
