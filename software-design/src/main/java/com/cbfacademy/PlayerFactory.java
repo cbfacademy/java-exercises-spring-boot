@@ -6,7 +6,7 @@ public class PlayerFactory {
      *
      * @return A new player.
      */
-    public static DicePlayer create() {
+    public static Player create() {
         return new DicePlayer();
     }
 }
