@@ -2,7 +2,10 @@ package com.cbfacademy;
 
 public class App {
     public static void main(String[] args) {
-        Game game = GameFactory.create();
+        Player player1 = PlayerFactory.create("Player 1");
+        Player player2 = PlayerFactory.create("Player 2");
+
+        Game game = GameFactory.create(player1, player2);
         String winner = game.play();
 
         if (winner == null) {
