@@ -6,7 +6,9 @@ public class PlayerFactory {
      *
      * @return A new player.
      */
-    public static DicePlayer create() {
-        return new DicePlayer();
+    public static Player create(String name) {
+        DicePlayer player = new DicePlayer();
+        player.setName(name);
+        return player;
     }
 }

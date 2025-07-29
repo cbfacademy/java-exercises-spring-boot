@@ -6,7 +6,9 @@ public class GameFactory {
      *
      * @return A dice game.
      */
-    public static DiceGame create() {
-        return new DiceGame();
+    public static Game create() {
+        Player player1 = PlayerFactory.create("Player 1");
+        Player player2 = PlayerFactory.create("Player 2");
+        return new DiceGame(player1, player2);
     }
 }
