@@ -33,6 +33,15 @@ public class IOUController {
         }
     }
 
+    @GetMapping("/ious")
+    public List<IOU> getIOUs(@RequestParam(required = false) String borrower) {
+        if (borrower != null)  {
+            return service.getIOUsByBorrower(borrower);
+        } else {
+            return service.getAllIOUs();
+        }
+    }
+
     @PostMapping
     public ResponseEntity<IOU> createIOU(@RequestBody IOU iou) {
         try {

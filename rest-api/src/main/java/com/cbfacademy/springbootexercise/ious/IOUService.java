@@ -20,6 +20,10 @@ public class IOUService {
         return repository.findAll();
     }
 
+    public List<IOU> getIOUsByBorrower(String borrower) {
+        return repository.findByBorrower(borrower);
+    }
+
    public IOU getIOU(UUID id) throws NoSuchElementException {
     return repository.findById(id)
             .orElseThrow(() -> new NoSuchElementException("IOU with id " + id + " not found"));
