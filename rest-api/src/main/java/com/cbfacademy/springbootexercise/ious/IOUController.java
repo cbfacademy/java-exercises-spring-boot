@@ -58,4 +58,9 @@ public class IOUController {
         return ResponseEntity.noContent().build();
     } 
 
+    @ExceptionHandler(NoSuchElementException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public void handleNotFound() {
+        // No body needed, just returns 404
+    }
 }
