@@ -42,6 +42,16 @@ public class IOUController {
         }
     }
 
+    @GetMapping("/high")
+    public ResponseEntity<List<IOU>> getHighValueIOUs() {
+        return ResponseEntity.ok(service.getHighValueIOUs());
+    }
+
+    @GetMapping("/low")
+    public ResponseEntity<List<IOU>> getLowValueIOUs() {
+        return ResponseEntity.ok(service.getLowValueIOUs());
+    }
+
     @PostMapping
     public ResponseEntity<IOU> createIOU(@RequestBody IOU iou) {
         try {

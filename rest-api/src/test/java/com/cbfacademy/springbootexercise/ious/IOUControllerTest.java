@@ -59,8 +59,8 @@ public class IOUControllerTest {
 			add(new IOU("Charlie", "Grace", new BigDecimal("200.00"), getInstant(72)));
 		}
 	};
-    
-    @MockBean
+
+	@MockBean
 	private IOUService iouService;
 
 	@BeforeEach
